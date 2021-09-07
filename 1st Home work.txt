@@ -1,0 +1,69 @@
+import java.util.ArrayList;
+
+public class NewClass {
+	public static class Enemy{
+		public	String Name;
+		int Hels,
+		Strength,
+		Protection;
+		
+	}
+	public static class Hero extends  Enemy {
+		int LvL,
+		Exp;
+		public boolean CanUse(int NLvL) {
+			if (LvL>=NLvL) {
+				System.out.println("Оружее можно экипировать");
+				return true;
+			} else {
+				System.out.println("Оружее экипировать нельзя");
+				return false;}	
+		}
+		public Hero() {
+			String[] c = {"Hero1","Hero2","Hero3","Hero4"};
+			Name = c[(int)(Math.random() * 4)];
+			Hels=10+(int)(Math.random() * 10);
+			Strength=2+(int)(Math.random() * 3);
+			Protection=1+(int)(Math.random() * 3);
+			LvL=5+(int)(Math.random() * 10);
+			Exp=1000+(int)(Math.random() * 500);
+		}
+	}
+	public static class Weapon {
+		private String Name;
+		private int Strength,
+		Price,
+		NeedLvL;
+		public Weapon() {
+			String[] c = {"Weapon1","Weapon2","Weapon3","Weapon4"};
+			Name = c[(int)(Math.random() * 4)];
+			Strength = (int)(Math.random() * 5);
+			Price = 200 + (int)(Math.random() * 1500);		
+			NeedLvL =  (int)(Math.random() * 15);
+		}
+		public int GetNLvL(){return NeedLvL;}
+	}
+	
+	
+
+public static void main(String[] args) {
+	ArrayList<Hero> h = new ArrayList<>();
+	ArrayList<Weapon> w = new ArrayList<>();
+		for (int i=0;i<10;i++) {
+			h.add(new Hero());
+			w.add(new Weapon());
+		}
+		for (Hero s : h) {
+		System.out.println("Имя героя       :" + s.Name);
+		System.out.println("Очки здоровья   :"+ s.Hels);
+		System.out.println("Текущий уровень :"+ s.LvL);
+		System.out.println();
+		}
+		for (Weapon s : w) {
+			System.out.println("Название     :" + s.Name);
+			System.out.println("Сила атаки   :"+ s.Strength);
+			System.out.println("Стоимость    :"+ s.Price);
+			System.out.println();
+			}
+	}
+}
